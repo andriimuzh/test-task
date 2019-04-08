@@ -27,16 +27,20 @@ html {
 
 body {
   margin: 0;
-  background-color: rgba(#9BC53D, .4);
+  background-color: rgba(#888, .3);
 }
 
 * {
   box-sizing: border-box;
 }
 
+.visited {
+  color: #640368 !important;
+}
+
 
 .header {
-  background: #dc461d;
+  background: rgba(#dc461d, .95);
   padding: 5px 0;
 
   &__title {
@@ -107,7 +111,6 @@ body {
 }
 
 
-
 /// movie list style
 
 .movielist {
@@ -117,7 +120,7 @@ body {
 
   &__item {
     margin: 10px 0;
-    color: #475A1C;
+    color: rgb(77, 109, 2);
     cursor: pointer;
     text-decoration: underline;
   }
@@ -127,7 +130,7 @@ body {
 .movieCard {
   padding: 0px 15px 0 0;
   color: #444;
-  background: rgba(#9BC53D, .5);
+  background: rgba(#777, .3);
   position: relative;
   display: flex;
 
@@ -172,5 +175,6 @@ body {
     color: #475A1C;
     cursor: pointer;
     text-decoration: underline;
+
   }
 }

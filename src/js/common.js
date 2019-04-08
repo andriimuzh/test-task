@@ -71,6 +71,10 @@ window.onload = function () {
     // add events for all list items
     const items = document.querySelectorAll(".movielist__item")
     items.forEach(el => {
+      let key = el.getAttribute('data-id')
+      if (localStorage.getItem(key) !== null) {
+        el.classList.add('visited');
+      }
       el.addEventListener("click", requestMovieCardData)
     })
   }
@@ -82,6 +86,7 @@ window.onload = function () {
 
   function requestMovieCardData() {
     let movieId = this.getAttribute("data-id")
+    localStorage.setItem(movieId, movieId);
     let isMovie = this.getAttribute("data-isMovie")
     let url = `https://api.themoviedb.org/3/${isMovie}/${movieId}?language=en-US&${accessKey}&append_to_response=recommendations`
 
@@ -93,8 +98,7 @@ window.onload = function () {
       if (xhr.status === 200) {
         let data = JSON.parse(xhr.responseText)
         printMovieCard(data);
-      }
-      else {
+      } else {
         mainTitle.textContent = "Oops something went wrong! Please try again later"
       }
     }
@@ -105,7 +109,6 @@ window.onload = function () {
 
   function printMovieCard(data) {
     let title = data.hasOwnProperty("title") ? data.title : data.name;
-
     let recommendations = data.recommendations.results
     recommendations.length = 8
 
@@ -136,9 +139,14 @@ window.onload = function () {
     root.innerHTML = '';
     root.appendChild(movieCard);
     mainTitle.textContent = title
-
     let recommendationsListItems = document.querySelectorAll('.recommendations__item')
-    recommendationsListItems.forEach(el => el.addEventListener('click', requestMovieCardData))
+    recommendationsListItems.forEach(el => {
+      let key = el.getAttribute('data-id')
+      if (localStorage.getItem(key) !== null) {
+        el.classList.add('visited');
+      }
+      el.addEventListener('click', requestMovieCardData)
+    })
 
   }
 
