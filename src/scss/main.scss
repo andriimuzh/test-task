@@ -1,0 +1,176 @@
+@mixin placeholder {
+  &.placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+html {
+  font-size: 20px;
+  font-family: 'Lato', Verdana, Tahoma, sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: rgba(#9BC53D, .4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.header {
+  background: #dc461d;
+  padding: 5px 0;
+
+  &__title {
+    width: 60%;
+    font-size: 28px;
+    padding: 15px 0;
+    margin: 0;
+    color: #444
+  }
+
+  &__inner-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+  }
+}
+
+
+.search {
+  margin: 0 auto;
+  width: 40%;
+  display: flex;
+
+  &__field {
+    color: #444;
+    font-size: 18px;
+    height: 36px;
+    width: 80%;
+    border: 0;
+    padding: 10px 20px;
+    outline: none;
+    border-radius: 10px 0 0 10px;
+
+    @include placeholder {
+      color: #333;
+    }
+
+    &:focus {
+      @include placeholder {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+    }
+  }
+
+  &__button {
+    background: #66c7cd;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 0;
+    height: 36px;
+    border: 0;
+    border-radius: 0 10px 10px 0;
+    width: 20%;
+    outline: none;
+  }
+}
+
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+
+
+/// movie list style
+
+.movielist {
+  margin: 20px 10px 0;
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    margin: 10px 0;
+    color: #475A1C;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+///         movieCard
+.movieCard {
+  padding: 0px 15px 0 0;
+  color: #444;
+  background: rgba(#9BC53D, .5);
+  position: relative;
+  display: flex;
+
+  .cardWrapp {
+    width: 56%;
+  }
+
+  &__img {
+    padding: 0 20px 0 0;
+    height: 85vh;
+  }
+
+  &__title {
+    font-size: 30px;
+    color: #444;
+    margin: 0;
+    font-weight: 700;
+    padding: 10px 0 10px;
+  }
+
+  &__overview {
+    margin: 10px 0;
+  }
+
+}
+
+
+///         Recommendations
+
+.recommendations {
+  color: #444;
+
+  &__title {
+    font-size: 25px;
+    font-weight: 700;
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  &__item {
+    margin: 0 0 15px;
+    color: #475A1C;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
